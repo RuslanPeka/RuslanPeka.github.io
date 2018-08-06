@@ -1,0 +1,32 @@
+1)
+SELECT status FROM tasks ORDER BY status;
+
+2)
+SELECT projects.name, COUNT(tasks.name) 
+FROM tasks INNER JOIN projects ON projects.id = tasks.project_id 
+GROUP BY projects.id 
+ORDER BY COUNT(tasks.name) DESC;
+
+3)
+SELECT projects.name, COUNT(tasks.name) 
+FROM tasks INNER JOIN projects ON projects.id = tasks.project_id 
+GROUP BY projects.id 
+ORDER BY COUNT(tasks.name) DESC, projects.name;
+
+4)
+SELECT name FROM tasks WHERE name LIKE 'N%';
+
+5)
+-
+
+6)
+SELECT name FROM tasks GROUP BY name HAVING count(*)>1;
+
+7)
+-
+
+8) Примерно похож
+SELECT DISTINCT projects.name, COUNT(tasks.status = 'Off') AS quantity
+FROM tasks INNER JOIN projects ON projects.id = tasks.project_id
+WHERE tasks.status = 'Off'
+GROUP BY projects.id;
